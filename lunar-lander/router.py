@@ -34,6 +34,7 @@ def predict(request: LunarLanderPredictRequestDto):
         print("Current game is over, a new game will start with next request!")
 
     # Your moves go here!
+    obs = np.array(obs)
     action, _ = model.predict(obs)
 
     return LunarLanderPredictResponseDto(
