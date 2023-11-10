@@ -16,7 +16,6 @@ env.reset()
 
 models_dir = "models/PPO"
 logdir = "logs"
-
 model_path = f"{models_dir}/300000.zip"
 
 model = PPO.load(model_path, env=env)
