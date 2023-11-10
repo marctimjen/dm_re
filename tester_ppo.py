@@ -1,5 +1,5 @@
 import gymnasium as gym
-from stable_baselines3 import A2C
+from stable_baselines3 import PPO
 import os
 
 env = gym.make(
@@ -14,12 +14,12 @@ env = gym.make(
 
 env.reset()
 
-models_dir = "models/A2C"
+models_dir = "models/PPO"
 logdir = "logs"
 
-model_path = f"{models_dir}/240000.zip"
+model_path = f"{models_dir}/300000.zip"
 
-model = A2C.load(model_path, env=env)
+model = PPO.load(model_path, env=env)
 
 EPISODES = 10
 
@@ -35,5 +35,6 @@ for er in range(EPISODES):
         else:
             action, _ = model.predict(obs)
         obs, reward, done, _, _ = env.step(action)
+        print(reward)
 
 env.close()
