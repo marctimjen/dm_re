@@ -16,12 +16,12 @@ env = gym.make(
     render_mode="human"
 )
 
-models_dir = "modelsold/A2C"
+models_dir = "models/A2C"
 model_path = f"{models_dir}/240000.zip"
 print(model_path)
 model = A2C.load(model_path, env=env)
 
-# models_dir = "modelsold/PPO"
+# models_dir = "models/PPO"
 # model_path = f"{models_dir}/300000.zip"
 # model = PPO.load(model_path, env=env)
 
