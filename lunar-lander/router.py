@@ -15,16 +15,20 @@ env = gym.make(
     render_mode="human"
 )
 
-models_dir = "models/A2C"
+models_dir = "modelsold/A2C"
 model_path = f"{models_dir}/240000.zip"
 model = A2C.load(model_path, env=env)
 
-# models_dir = "models/PPO"
+# models_dir = "modelsold/PPO"
 # model_path = f"{models_dir}/300000.zip"
 # model = PPO.load(model_path, env=env)
 
+# models_dir = "models/PPO"
+# model_path = f"{models_dir}/1000000.zip"
+# model = PPO.load(model_path, env=env)
+
 # models_dir = "models/DQN"
-# model_path = f"{models_dir}/2400000.zip"
+# model_path = f"{models_dir}/18000000.zip"
 # model = DQN.load(model_path, env=env)
 
 router = APIRouter()

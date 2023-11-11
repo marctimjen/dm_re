@@ -26,11 +26,11 @@ model = DQN("MlpPolicy", env, verbose=1, tensorboard_log=logdir)
 
 TIMESTPES = 10000
 EPISODES = 300
-
-for i in range(1, EPISODES):
+i = 1
+while True:
     model.learn(total_timesteps=TIMESTPES, reset_num_timesteps=False, tb_log_name="DQN")
     model.save(f"{models_dir}/{TIMESTPES * i}")
-
+    i += 1
 
 # for ep in range(episodes):
 #     obs = env.reset()

@@ -17,7 +17,7 @@ env.reset()
 models_dir = "models/DQN"
 logdir = "logs"
 
-model_path = f"{models_dir}/2400000.zip"
+model_path = f"{models_dir}/18000000.zip"
 
 model = DQN.load(model_path, env=env)
 

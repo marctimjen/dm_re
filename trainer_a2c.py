@@ -54,11 +54,12 @@ if not os.path.exists(logdir):
 model = A2C("MlpPolicy", env, verbose=1, tensorboard_log=logdir)
 
 TIMESTPES = 10000
-EPISODES = 300
-
-for i in range(1, EPISODES):
+# EPISODES = 300
+i = 1
+while True:
     model.learn(total_timesteps=TIMESTPES, reset_num_timesteps=False, tb_log_name="A2C")
     model.save(f"{models_dir}/{TIMESTPES * i}")
+    i += 1
 
 
 # for ep in range(episodes):
