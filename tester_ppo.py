@@ -20,7 +20,7 @@ env.reset()
 # model_path = f"{models_dir}/1000000.zip"
 
 
-model_path = f"/home/hp/Documents/GitHub/dm_re/models/best_models/ppo-LunarLander-v2.zip"
+model_path = f"/home/hp/Documents/GitHub/dm_re/models/best_models/ppo-mlp-LunarLander-v2.zip"
 model = PPO.load(model_path, env=env)
 
 EPISODES = 10

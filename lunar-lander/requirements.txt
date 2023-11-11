@@ -1,3 +1,5 @@
 gymnasium[box2d]
 numpy
 pygame
+fastapi[all]
+stable_baselines3
