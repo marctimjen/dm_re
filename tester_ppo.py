@@ -14,13 +14,12 @@ env = gym.make(
 
 env.reset()
 
-# models_dir = "modelsold/PPO"
-# logdir = "logs"
-# model_path = f"{models_dir}/300000.zip"
+models_dir = "modelsold/PPO"
+logdir = "logs"
+model_path = f"{models_dir}/300000.zip"
 # model_path = f"{models_dir}/1000000.zip"
 
-
-model_path = f"/home/hp/Documents/GitHub/dm_re/models/best_models/ppo-mlp-LunarLander-v2.zip"
+# model_path = f"/home/hp/Documents/GitHub/dm_re/models/best_models/ppo-mlp-LunarLander-v2.zip"
 model = PPO.load(model_path, env=env)
 
 EPISODES = 10

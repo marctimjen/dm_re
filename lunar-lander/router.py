@@ -18,6 +18,7 @@ env = gym.make(
 
 models_dir = "modelsold/A2C"
 model_path = f"{models_dir}/240000.zip"
+print(model_path)
 model = A2C.load(model_path, env=env)
 
 # models_dir = "modelsold/PPO"
