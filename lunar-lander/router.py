@@ -1,5 +1,6 @@
 import numpy as np
 import time
+import uuid
 from fastapi import APIRouter
 from models.dtos import LunarLanderPredictRequestDto, LunarLanderPredictResponseDto
 
@@ -21,19 +22,22 @@ env = gym.make(
 # print(model_path)
 # model = A2C.load(model_path, env=env)
 
-models_dir = "/home/paperspace/dm_re/models/PPO"
-model_path = f"{models_dir}/300000.zip"
-model = PPO.load(model_path, env=env)
+# models_dir = "/home/paperspace/dm_re/models/PPO"
+# model_path = f"{models_dir}/300000.zip"
+# model = PPO.load(model_path, env=env)
 
 # models_dir = "/home/paperspace/dm_re/models/PPO"
 # model_path = f"{models_dir}/1000000.zip"
 # model = PPO.load(model_path, env=env)
 
-# models_dir = "/home/paperspace/dm_re/models/DQN"
-# model_path = f"{models_dir}/18000000.zip"
-# model = DQN.load(model_path, env=env)
+models_dir = "/home/paperspace/dm_re/models/DQN"
+model_path = f"{models_dir}/18000000.zip"
+model = DQN.load(model_path, env=env)
 
 router = APIRouter()
+
+with open("validation_attempt.log", "a+") as f:
+    f.write(f"\nStarting seed {uuid.uuid4()}\n")
 
 start_time = time.time()
 @router.post('/predict', response_model=LunarLanderPredictResponseDto)
