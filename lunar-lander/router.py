@@ -1,4 +1,5 @@
 import numpy as np
+import time
 from fastapi import APIRouter
 from models.dtos import LunarLanderPredictRequestDto, LunarLanderPredictResponseDto
 
@@ -39,7 +40,10 @@ def predict(request: LunarLanderPredictRequestDto):
     obs = request.observation
 
     if request.is_terminal:
+        with open("validation_attempt.log", "a+") as f:
+            f.write(f"{time.time()}: Ending game!")
         print("Current game is over, a new game will start with next request!")
+
 
     # Your moves go here!
     obs = np.array(obs)
