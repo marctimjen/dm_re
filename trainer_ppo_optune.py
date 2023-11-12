@@ -8,6 +8,7 @@ from stable_baselines3.common.vec_env import DummyVecEnv
 
 import optuna
 from optuna.samplers import TPESampler
+# https://github.com/kingabzpro/deep-rl-class/blob/main/unit1/unit1_optuna_guide.ipynb
 
 
 env = gym.make(
