@@ -2,7 +2,7 @@ import gymnasium as gym
 
 from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.monitor import Monitor
-from stable_baselines3 import PPO
+from stable_baselines3 import A2C
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3.common.vec_env import DummyVecEnv
 
@@ -21,7 +21,7 @@ run = neptune.init_run(
     api_token=token,
 )
 
-run["param"] = {"re_algo": "ppo"}
+run["param"] = {"re_algo": "a2c"}
 
 neptune_callback = optuna_utils.NeptuneCallback(run)
 
@@ -67,14 +67,13 @@ models_dir = "models/optuna/model"
 logdir = "logs"
 
 def run_training(params, verbose=0, save_model=False):
-    model = PPO(
+    model = A2C(
         policy='MlpPolicy',
         env=env,
-        n_steps=1024,
-        batch_size=64,
-        n_epochs=params['n_epochs'],  # We're tuning this.
+        learning_rate=params["lr"],
+        n_steps=params["n_steps"],
         gamma=params['gamma'],  # We're tuning this.
-        gae_lambda=0.98,
+        gae_lambda=params['gae_lambda'],  # We're tuning this.
         ent_coef=0.01,
         verbose=verbose
     )
@@ -92,8 +91,10 @@ def run_training(params, verbose=0, save_model=False):
 def objective(trial):
     opt_id = trial.number
     params = {
-        "n_epochs": trial.suggest_int("n_epochs", 10, 25),
+        "n_steps": trial.suggest_int("n_steps", 10, 25),
+        "lr": trial.suggest_float("lr", 1e-4, 1e-3),
         "gamma": trial.suggest_float("gamma", 0.9900, 0.9999),
+        "gae_lambda": trial.suggest_float("gae_lambda", 0.95, 1.0),
         "total_timesteps": trial.suggest_int("total_timesteps", 1_000_000, 5_000_000)
     }
     model, score, mean_reward, std_reward = run_training(params)
