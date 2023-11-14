@@ -1,3 +1,6 @@
-/home/cv05f23/git/Weakly-supervised-anomaly-detection/MGFNmain/cheat/cheat_test_xd.py
-/home/cv05f23/git/Weakly-supervised-anomaly-detection/MGFNmain/cheat/cheat_test_xd.py
-/home/cv05f23/git/Weakly-supervised-anomaly-detection/MGFNmain/cheat/cheat_test_xd.py
+/home/tyson/dm_re/trainer/trainer_ppo_giga.py -c 0 -p PPO_optimized_a66
+/home/tyson/dm_re/trainer/trainer_ppo_giga.py -c 0 -p PPO_optimized_a66
+/home/tyson/dm_re/trainer/trainer_ppo_giga.py -c 0 -p PPO_optimized_a66
+/home/tyson/dm_re/trainer/trainer_ppo_giga.py -c 1 -p PPO_optimized_gab
+/home/tyson/dm_re/trainer/trainer_ppo_giga.py -c 1 -p PPO_optimized_gab
+/home/tyson/dm_re/trainer/trainer_ppo_giga.py -c 1 -p PPO_optimized_gab

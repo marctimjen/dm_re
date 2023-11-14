@@ -98,3 +98,5 @@ while True:
     else:
         print("Close now")
         time.sleep(60)
+
+project.stop()

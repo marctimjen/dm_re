@@ -8,3 +8,4 @@ logs_13/PPO_13_0/events.out.tfevents.1699924599.hp-Pavilion.50758.1
 logs_13/PPO_13_0/events.out.tfevents.1699935195.hp-Pavilion.50758.2
 logs_13/PPO_13_0/events.out.tfevents.1699945774.hp-Pavilion.50758.3
 logs_13/PPO_13_0/events.out.tfevents.1699956426.hp-Pavilion.50758.4
+*.pyc
