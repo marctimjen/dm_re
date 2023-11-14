@@ -8,9 +8,12 @@ import os
 import neptune
 import numpy as np
 
-n_tests = 100
+n_tests = 2500
 
-token = os.getenv('NEPTUNE_API_TOKEN')
+with open("NEPTUNE_API_TOKEN.txt", "r") as file:
+    # Read the entire content of the file into a string
+    token = file.read()
+
 project = neptune.init_project(project="Kernel-bois/rl-models",
                                api_token=token)
 
