@@ -5,8 +5,10 @@ from stable_baselines3.common.monitor import Monitor
 import os
 import neptune
 
+with open("NEPTUNE_API_TOKEN.txt", "r") as file:
+    # Read the entire content of the file into a string
+    token = file.read()
 
-token = os.getenv('NEPTUNE_API_TOKEN')
 run = neptune.init_run(
     project="Kernel-bois/reinforcement-learning",
     api_token=token,
@@ -38,7 +40,17 @@ models_dir = "models"
 if not os.path.exists(models_dir):
     os.makedirs(models_dir)
 
-model = PPO("MlpPolicy", env, verbose=0)
+model = PPO(
+    "MlpPolicy",
+    env=env,
+    n_steps=1024,
+    batch_size=64,
+    n_epochs=25,  # We're tuning this.
+    gamma=0.9908980966893566,  # We're tuning this.
+    gae_lambda=0.98,
+    ent_coef=0.01,
+    verbose=0
+)
 
 TIMESTPES = 10000
 EPISODES = 3

@@ -2,7 +2,6 @@ import gymnasium as gym
 from stable_baselines3 import PPO
 import os
 
-
 env = gym.make(
     "LunarLander-v2",
     continuous=False,
@@ -14,8 +13,8 @@ env = gym.make(
 
 env.reset()
 
-models_dir = "modelsnew/PPO"
-logdir = "logs"
+models_dir = "models/PPO_13"
+logdir = "logs_13"
 
 if not os.path.exists(models_dir):
     os.makedirs(models_dir)
@@ -23,13 +22,23 @@ if not os.path.exists(models_dir):
 if not os.path.exists(logdir):
     os.makedirs(logdir)
 
-model = PPO("MlpPolicy", env, verbose=1)
+model = PPO(
+    policy='MlpPolicy',
+    env=env,
+    n_steps=1024,
+    batch_size=64,
+    n_epochs=25,  # We're tuning this.
+    gamma=0.9908980966893566,  # We're tuning this.
+    gae_lambda=0.98,
+    ent_coef=0.01,
+    verbose=1,
+    tensorboard_log=logdir)
 
-TIMESTPES = 10000
+TIMESTPES = 4992898
 EPISODES = 300
 i = 1
 while True:
-    model.learn(total_timesteps=TIMESTPES, reset_num_timesteps=False, tb_log_name="PPO")
+    model.learn(total_timesteps=TIMESTPES, reset_num_timesteps=False, tb_log_name="PPO_13")
     model.save(f"{models_dir}/{TIMESTPES * i}")
     i += 1
 
