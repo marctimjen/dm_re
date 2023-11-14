@@ -79,8 +79,6 @@ while True:
     if mean_reward > BEST_MEAN_REWARD:
         model.save(f"{models_dir}/DQN_{run_id}_EP_{i}")
         BEST_MEAN_REWARD = copy.deepcopy(mean_reward)
-    else:
-        BEST_MEAN_REWARD -= 1
 
     i += 1
 
