@@ -96,4 +96,5 @@ while True:
             run.stop()
 
     else:
+        print("Close now")
         time.sleep(60)
