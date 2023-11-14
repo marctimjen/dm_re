@@ -30,13 +30,22 @@ env = gym.make(
 # model_path = f"{models_dir}/1000000.zip"
 # model = PPO.load(model_path, env=env)
 
-models_dir = "/home/paperspace/dm_re/models/DQN"
-model_path = f"{models_dir}/18000000.zip"
-model = DQN.load(model_path, env=env)
+
+# models_dir = "/home/paperspace/dm_re/models/PPO"
+model_path = f"/home/paperspace/dm_re/models/best_models/PPO_REIN-74_EP_16.zip"
+model = PPO.load(model_path, env=env)
+
+
+# models_dir = "/home/paperspace/dm_re/models/DQN"
+# model_path = f"{models_dir}/18000000.zip"
+# model = DQN.load(model_path, env=env)
 
 router = APIRouter()
 
 with open("validation_attempt.log", "a+") as f:
+    f.write(f"\nStarting seed {uuid.uuid4()}\n")
+
+with open("pings.log", "a+") as f:
     f.write(f"\nStarting seed {uuid.uuid4()}\n")
 
 start_time = time.time()
@@ -44,11 +53,14 @@ start_time = time.time()
 def predict(request: LunarLanderPredictRequestDto):
     obs = request.observation
 
-    if request.is_terminal:
-        with open("validation_attempt.log", "a+") as f:
-            f.write(f"{time.time()- start_time}: Ending game! \n")
-        print("Current game is over, a new game will start with next request!")
-
+    with open("pings.log", "a+") as f_ping:
+        if request.is_terminal:
+            f_ping.write(str(time.time()) + ",X")
+            with open("validation_attempt.log", "a+") as f:
+                f.write(f"{time.time()- start_time}: Ending game! \n")
+            print("Current game is over, a new game will start with next request!")
+        else:
+            f_ping.write(str(time.time()))
 
     # Your moves go here!
     obs = np.array(obs)
