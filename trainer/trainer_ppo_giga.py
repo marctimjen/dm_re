@@ -27,6 +27,8 @@ run = neptune.init_run(
 )
 run_id = run["sys/id"].fetch()
 
+run["params"] = params | {"param_name": str(args.params)}
+
 env = gym.make(
     "LunarLander-v2",
     continuous=False,
