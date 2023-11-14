@@ -1,0 +1,6 @@
+/home/tyson/dm_re/trainer/trainer_dqn_giga.py -c 0 -p DQN_default
+/home/tyson/dm_re/trainer/trainer_dqn_giga.py -c 0 -p DQN_default
+/home/tyson/dm_re/trainer/trainer_dqn_giga.py -c 0 -p DQN_optimized
+/home/tyson/dm_re/trainer/trainer_a2c_giga.py -c 1 -p A2C_default
+/home/tyson/dm_re/trainer/trainer_a2c_giga.py -c 1 -p A2C_default
+/home/tyson/dm_re/trainer/trainer_a2c_giga.py -c 1 -p A2C_optimized
