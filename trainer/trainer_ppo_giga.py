@@ -4,6 +4,18 @@ from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3.common.monitor import Monitor
 import os
 import neptune
+import copy
+import argparse
+import parameter_settings
+
+parser = argparse.ArgumentParser(description='PPO_giga_trainer')
+parser.add_argument("-c", "--cuda", required=True, help="gpu number")
+parser.add_argument("-p", "--params", required=True, help="Params to load")  # which parameters to load
+
+args = parser.parse_args()
+cuda_device = f'cuda:{args.cuda}'
+params = parameter_settings.HYPERPARAMS[args.params]
+
 
 with open("NEPTUNE_API_TOKEN.txt", "r") as file:
     # Read the entire content of the file into a string
@@ -43,23 +55,21 @@ if not os.path.exists(models_dir):
 model = PPO(
     "MlpPolicy",
     env=env,
-    n_steps=1024,
-    batch_size=64,
-    n_epochs=25,  # We're tuning this.
-    gamma=0.9908980966893566,  # We're tuning this.
-    gae_lambda=0.98,
-    ent_coef=0.01,
+    device=cuda_device,
+    n_steps=params["n_steps"],
+    batch_size=params["batch_size"],
+    n_epochs=params["n_epochs"],
+    gamma=params["gamma"],
+    gae_lambda=params["gae_lambda"],
+    ent_coef=params["ent_coef"],
     verbose=0
 )
 
-TIMESTPES = 10000
-EPISODES = 3
-i = 1
-BEST_MEAN_REWARD = -1000
-
-
-for i in range(EPISODES):  # True:
-    model.learn(total_timesteps=TIMESTPES, reset_num_timesteps=False, tb_log_name="PPO_" + str(run_id))
+TIMESTPES = 20000
+BEST_MEAN_REWARD = 200
+i = 0
+while True:
+    model.learn(total_timesteps=TIMESTPES, reset_num_timesteps=False)
 
     mean_reward, std_reward = evaluate_policy(model, eval_env, n_eval_episodes=50, deterministic=True)
 
@@ -68,11 +78,11 @@ for i in range(EPISODES):  # True:
 
     if mean_reward > BEST_MEAN_REWARD:
         model.save(f"{models_dir}/PPO_{run_id}_EP_{i}")
-        BEST_MEAN_REWARD = mean_reward
+        BEST_MEAN_REWARD = copy.deepcopy(mean_reward)
     else:
         BEST_MEAN_REWARD -= 1
 
-    # i += 1
+    i += 1
 
 
 # for ep in range(episodes):
