@@ -55,12 +55,12 @@ def predict(request: LunarLanderPredictRequestDto):
 
     with open("pings.log", "a+") as f_ping:
         if request.is_terminal:
-            f_ping.write(str(time.time()) + ",X")
+            f_ping.write(str(time.time()) + ",X \n")
             with open("validation_attempt.log", "a+") as f:
                 f.write(f"{time.time()- start_time}: Ending game! \n")
             print("Current game is over, a new game will start with next request!")
         else:
-            f_ping.write(str(time.time()))
+            f_ping.write(str(time.time()) + "\n")
 
     # Your moves go here!
     obs = np.array(obs)
