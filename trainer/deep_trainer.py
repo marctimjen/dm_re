@@ -15,7 +15,7 @@ args = parser.parse_args()
 
 if args.user == "marc":
     py_path = "/home/marc/anaconda3/envs/lunar_lander/bin/python3"
-    path = f"/home/hp/Documents/GitHub/dm_re/trainer/process_{args.logs}.txt"
+    path = f"/home/hp/Documents/GitHub/dm_re/trainer/processes/process_{args.logs}.txt"
 else:
     py_path = "/home/tyson/.conda/envs/lunar_lander/bin/python3"
     path = f"/home/tyson/dm_re/trainer/processes/process_{args.logs}.txt"
