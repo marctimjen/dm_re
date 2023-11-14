@@ -28,7 +28,8 @@ neptune_callback = optuna_utils.NeptuneCallback(run)
 from stable_baselines3.common.vec_env import VecEnv
 from stable_baselines3.common.vec_env.dummy_vec_env import DummyVecEnv
 
-n_envs = 16
+n_envs = 64
+print("number envs:", n_envs)
 # LunarLander environment with custom parameters
 def make_env():
     custom_lunar_lander = gym.make('LunarLander-v2', continuous=False, gravity=-10.0, enable_wind=False,

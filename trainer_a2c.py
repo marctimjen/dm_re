@@ -42,7 +42,7 @@ env = gym.make(
 env.reset()
 
 
-models_dir = "models/A2C"
+models_dir = "modelsnew/A2C"
 logdir = "logs"
 
 if not os.path.exists(models_dir):

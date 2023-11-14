@@ -13,7 +13,7 @@ env = gym.make(
 
 env.reset()
 
-models_dir = "models/DQN"
+models_dir = "modelsnew/DQN"
 logdir = "logs"
 
 if not os.path.exists(models_dir):

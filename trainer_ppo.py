@@ -2,6 +2,7 @@ import gymnasium as gym
 from stable_baselines3 import PPO
 import os
 
+
 env = gym.make(
     "LunarLander-v2",
     continuous=False,
@@ -13,7 +14,7 @@ env = gym.make(
 
 env.reset()
 
-models_dir = "models/PPO"
+models_dir = "modelsnew/PPO"
 logdir = "logs"
 
 if not os.path.exists(models_dir):
@@ -22,7 +23,7 @@ if not os.path.exists(models_dir):
 if not os.path.exists(logdir):
     os.makedirs(logdir)
 
-model = PPO("MlpPolicy", env, verbose=1, tensorboard_log=logdir)
+model = PPO("MlpPolicy", env, verbose=1)
 
 TIMESTPES = 10000
 EPISODES = 300
