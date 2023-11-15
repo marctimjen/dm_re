@@ -64,6 +64,12 @@ A2C_optimized = {
     "ent_coef": 0.01
 }
 
+ARS_default = {}
+
+RePPO_default = {}
+
+TRPO_default = {}
+
 HYPERPARAMS = {
     "PPO_default": PPO_default,
     "PPO_optimized": PPO_optimized,
@@ -73,4 +79,7 @@ HYPERPARAMS = {
     "DQN_optimized": DQN_optimized,
     "A2C_default": A2C_default,
     "A2C_optimized": A2C_optimized,
+    "ARS_default": ARS_default,
+    "RePPO_default": RePPO_default,
+    "TRPO_default": TRPO_default,
 }

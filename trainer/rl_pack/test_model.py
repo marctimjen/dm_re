@@ -1,5 +1,6 @@
 import gymnasium as gym
 from stable_baselines3 import PPO, A2C, DQN
+from sb3_contrib import ARS, RecurrentPPO, TRPO
 from .eval_policy import evaluate_policy
 from stable_baselines3.common.monitor import Monitor
 import numpy as np
@@ -30,6 +31,12 @@ def model_tester(mdl_name: str, models_dir: str, token: str, n_tests: int, proje
         model = A2C.load(model_path, env=env, device=cuda_device)
     elif "DQN" in m_name:
         model = DQN.load(model_path, env=env, device=cuda_device)
+    elif "ARS" in m_name:
+        model = ARS.load(model_path, env=env, device=cuda_device)
+    elif "RePPO" in m_name:
+        model = RecurrentPPO.load(model_path, env=env, device=cuda_device)
+    elif "TRPO" in m_name:
+        model = TRPO.load(model_path, env=env, device=cuda_device)
     else:
         raise KeyError(f"Model name is not correct got {m_name}")
     run["model_name"] = m_name
