@@ -36,7 +36,8 @@ env = gym.make(
 # model = PPO.load(model_path, env=env)
 
 
-model_path = f"/home/paperspace/dm_re/models/best_models/DQN_REIN-92_EP_127.zip"
+# model_path = f"/home/paperspace/dm_re/models/best_models/DQN_REIN-92_EP_127.zip"
+model_path = f"/home/paperspace/dm_re/models/best_models/DQN_REIN-92_EP_201.zip"
 model = DQN.load(model_path, env=env)
 
 router = APIRouter()
