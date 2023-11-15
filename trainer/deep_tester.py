@@ -47,8 +47,6 @@ while True:
 
     not_tested_models = [mdl for mdl in listed_models if mdl not in tested_models]
 
-    print(not_tested_models)
-
     j = 0
     for mdl in not_tested_models:
         if shifter:
@@ -60,7 +58,7 @@ while True:
         j += 1
         time.sleep(1)
 
-        if j % 1 == 0:
+        if j % 8 == 0:
             (output, err) = p.communicate()
             p_status = p.wait()
             time.sleep(60)
