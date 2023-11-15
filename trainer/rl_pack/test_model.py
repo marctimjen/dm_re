@@ -31,7 +31,7 @@ def model_tester(mdl_name: str, models_dir: str, token: str, n_tests: int, proje
     elif "DQN" in m_name:
         model = DQN.load(model_path, env=env, device=cuda_device)
     else:
-        raise KeyError("Model name is not correct")
+        raise KeyError(f"Model name is not correct got {m_name}")
     run["model_name"] = m_name
     project[f"names/{m_name}"] = m_name
     project[f"models/{m_name}"].upload(model_path + ".zip")
