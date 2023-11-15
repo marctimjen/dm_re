@@ -66,7 +66,7 @@ model = DQN(
 )
 
 TIMESTPES = 20000
-BEST_MEAN_REWARD = 200
+BEST_MEAN_REWARD = 270
 i = 0
 while True:
     model.learn(total_timesteps=TIMESTPES, reset_num_timesteps=False)
@@ -78,7 +78,6 @@ while True:
 
     if mean_reward > BEST_MEAN_REWARD:
         model.save(f"{models_dir}/DQN_{run_id}_EP_{i}")
-        BEST_MEAN_REWARD = copy.deepcopy(mean_reward)
 
     i += 1
 
