@@ -67,7 +67,7 @@ model = A2C(
 )
 
 TIMESTPES = 20000
-BEST_MEAN_REWARD = 270
+BEST_MEAN_REWARD = 280
 i = 0
 while True:
     model.learn(total_timesteps=TIMESTPES, reset_num_timesteps=False)
