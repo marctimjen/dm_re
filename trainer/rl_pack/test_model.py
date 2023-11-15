@@ -6,7 +6,9 @@ import numpy as np
 import neptune
 
 
-def model_tester(mdl_name: str, models_dir: str, token: str, n_tests: int, project):
+def model_tester(mdl_name: str, models_dir: str, token: str, n_tests: int, project, cuda: int):
+
+    cuda_device = f'cuda:{cuda}'
 
     m_name = mdl_name[:-4]
     model_path = models_dir + m_name
@@ -23,11 +25,11 @@ def model_tester(mdl_name: str, models_dir: str, token: str, n_tests: int, proje
         turbulence_power=1.5
     ))
     if "PPO" in m_name:
-        model = PPO.load(model_path, env=env)
+        model = PPO.load(model_path, env=env, device=cuda_device)
     elif "A2C" in m_name:
-        model = A2C.load(model_path, env=env)
+        model = A2C.load(model_path, env=env, device=cuda_device)
     elif "DQN" in m_name:
-        model = DQN.load(model_path, env=env)
+        model = DQN.load(model_path, env=env, device=cuda_device)
     else:
         raise KeyError("Model name is not correct")
     run["model_name"] = m_name
