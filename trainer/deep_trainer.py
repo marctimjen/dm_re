@@ -14,7 +14,7 @@ parser.add_argument("-l", "--logs", required=True, help="Logs to load")  # which
 args = parser.parse_args()
 
 if args.user == "marc":
-    py_path = "/home/marc/anaconda3/envs/lunar_lander/bin/python3"
+    py_path = "/home/hp/anaconda3/envs/lunar_lander/bin/python3"
     path = f"/home/hp/Documents/GitHub/dm_re/trainer/processes/process_{args.logs}.txt"
 else:
     py_path = "/home/tyson/.conda/envs/lunar_lander/bin/python3"

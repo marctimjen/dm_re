@@ -1,0 +1,2 @@
+/home/hp/Documents/GitHub/dm_re/trainer/trainer_ppo_giga.py -c 0 -p PPO_optimized
+/home/hp/Documents/GitHub/dm_re/trainer/trainer_ppo_giga.py -c 0 -p PPO_optimized

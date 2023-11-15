@@ -32,13 +32,12 @@ env = gym.make(
 
 
 # models_dir = "/home/paperspace/dm_re/models/PPO"
-model_path = f"/home/paperspace/dm_re/models/best_models/PPO_REIN-74_EP_16.zip"
-model = PPO.load(model_path, env=env)
+# model_path = f"/home/paperspace/dm_re/models/best_models/PPO_REIN-74_EP_16.zip"
+# model = PPO.load(model_path, env=env)
 
 
-# models_dir = "/home/paperspace/dm_re/models/DQN"
-# model_path = f"{models_dir}/18000000.zip"
-# model = DQN.load(model_path, env=env)
+model_path = f"/home/paperspace/dm_re/models/best_models/DQN_REIN-92_EP_127.zip"
+model = DQN.load(model_path, env=env)
 
 router = APIRouter()
 
@@ -64,7 +63,7 @@ def predict(request: LunarLanderPredictRequestDto):
 
     # Your moves go here!
     obs = np.array(obs)
-    action, _ = model.predict(obs)
+    action, _ = model.predict(obs, deterministic=True)
 
     return LunarLanderPredictResponseDto(
         action=action
