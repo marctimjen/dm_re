@@ -1,0 +1,4 @@
+/home/marc/Documents/GitHub/9semester/dm_re/trainer/trainer_dqn_giga.py -c 0 -p DQN_optimized
+/home/marc/Documents/GitHub/9semester/dm_re/trainer/trainer_dqn_giga.py -c 0 -p DQN_optimized
+/home/marc/Documents/GitHub/9semester/dm_re/trainer/trainer_ARS_giga.py -c 0 -p ARS_default
+/home/marc/Documents/GitHub/9semester/dm_re/trainer/trainer_ARS_giga.py -c 1 -p ARS_default

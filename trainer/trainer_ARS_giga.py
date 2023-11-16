@@ -56,7 +56,7 @@ if not os.path.exists(models_dir):
 model = ARS("MlpPolicy", env=env)
 
 TIMESTPES = 20000
-BEST_MEAN_REWARD = 280
+BEST_MEAN_REWARD = 289.0
 i = 0
 while True:
     model.learn(total_timesteps=TIMESTPES, reset_num_timesteps=False)

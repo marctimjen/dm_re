@@ -8,12 +8,15 @@ of different models to test.
 """
 
 parser = argparse.ArgumentParser(description='master process')
-parser.add_argument("-u", '--user', default='cluster', choices=['cluster', 'marc'])  # this gives dir to data and save loc
+parser.add_argument("-u", '--user', default='cluster', choices=['cluster', 'marc', "hp"])  # this gives dir to data and save loc
 parser.add_argument("-l", "--logs", required=True, help="Logs to load")  # which process log to load
 
 args = parser.parse_args()
 
 if args.user == "marc":
+    py_path = "/home/marc/anaconda3/envs/lunar_lander/bin/python3"
+    path = f"/home/marc/Documents/GitHub/9semester/dm_re/trainer/processes/process_{args.logs}.txt"
+elif args.user == "hp":
     py_path = "/home/hp/anaconda3/envs/lunar_lander/bin/python3"
     path = f"/home/hp/Documents/GitHub/dm_re/trainer/processes/process_{args.logs}.txt"
 else:

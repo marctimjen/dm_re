@@ -1,6 +1,6 @@
-/home/tyson/dm_re/trainer/trainer_dqn_giga.py -c 0 -p DQN_optimized
-/home/tyson/dm_re/trainer/trainer_dqn_giga.py -c 0 -p DQN_optimized
-/home/tyson/dm_re/trainer/trainer_dqn_giga.py -c 0 -p DQN_optimized
 /home/tyson/dm_re/trainer/trainer_ARS_giga.py -c 0 -p ARS_default
-/home/tyson/dm_re/trainer/trainer_TRPO_giga.py -c 0 -p TRPO_default
-/home/tyson/dm_re/trainer/trainer_RePPO_giga.py -c 0 -p RePPO_default
+/home/tyson/dm_re/trainer/trainer_ARS_giga.py -c 0 -p ARS_default
+/home/tyson/dm_re/trainer/trainer_ARS_giga.py -c 0 -p ARS_default
+/home/tyson/dm_re/trainer/trainer_ARS_giga.py -c 0 -p ARS_default
+/home/tyson/dm_re/trainer/trainer_ARS_giga.py -c 0 -p ARS_default
+/home/tyson/dm_re/trainer/trainer_ARS_giga.py -c 0 -p ARS_default
