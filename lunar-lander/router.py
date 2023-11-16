@@ -6,6 +6,7 @@ from models.dtos import LunarLanderPredictRequestDto, LunarLanderPredictResponse
 
 import gymnasium as gym
 from stable_baselines3 import A2C, PPO, DQN
+from sb3_contrib import ARS, RecurrentPPO, TRPO
 
 env = gym.make(
     "LunarLander-v2",
@@ -37,8 +38,11 @@ env = gym.make(
 
 
 # model_path = f"/home/paperspace/dm_re/models/best_models/DQN_REIN-92_EP_127.zip"
-model_path = f"/home/paperspace/dm_re/models/best_models/DQN_REIN-92_EP_201.zip"
-model = DQN.load(model_path, env=env)
+# model_path = f"/home/paperspace/dm_re/models/best_models/DQN_REIN-92_EP_201.zip"
+# model = DQN.load(model_path, env=env)
+
+model_path = f"/home/paperspace/dm_re/models/best_models/ARS_REIN-159_EP_5442.zip"
+model = ARS.load(model_path, env=env)
 
 router = APIRouter()
 
