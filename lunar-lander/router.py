@@ -41,7 +41,7 @@ env = gym.make(
 # model_path = f"/home/paperspace/dm_re/models/best_models/DQN_REIN-92_EP_201.zip"
 # model = DQN.load(model_path, env=env)
 
-model_path = f"/home/paperspace/dm_re/models/best_models/ARS_REIN-159_EP_5442.zip"
+model_path = f"/home/paperspace/dm_re/models/best_models/ARS_REIN-159_EP_5608.zip"
 model = ARS.load(model_path, env=env)
 
 router = APIRouter()
