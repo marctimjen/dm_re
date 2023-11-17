@@ -18,55 +18,18 @@ env = gym.make(
     render_mode="human"
 )
 
-# models_dir = "/home/paperspace/dm_re/models/A2C"
-# model_path = f"{models_dir}/240000.zip"
-# print(model_path)
-# model = A2C.load(model_path, env=env)
 
-# models_dir = "/home/paperspace/dm_re/models/PPO"
-# model_path = f"{models_dir}/300000.zip"
-# model = PPO.load(model_path, env=env)
-
-# models_dir = "/home/paperspace/dm_re/models/PPO"
-# model_path = f"{models_dir}/1000000.zip"
-# model = PPO.load(model_path, env=env)
-
-
-# models_dir = "/home/paperspace/dm_re/models/PPO"
-# model_path = f"/home/paperspace/dm_re/models/best_models/PPO_REIN-74_EP_16.zip"
-# model = PPO.load(model_path, env=env)
-
-
-# model_path = f"/home/paperspace/dm_re/models/best_models/DQN_REIN-92_EP_127.zip"
-# model_path = f"/home/paperspace/dm_re/models/best_models/DQN_REIN-92_EP_201.zip"
-# model = DQN.load(model_path, env=env)
-
-# model_path = f"/home/paperspace/dm_re/models/best_models/ARS_REIN-159_EP_5608.zip"
-# model_path = f"/home/paperspace/dm_re/models/best_models/ARS_REIN-188_EP_2128.zip"
-model_path = f"/home/paperspace/dm_re/models/best_models/ARS_REIN-159_EP_5525.zip"
+model_path = f"/home/paperspace/dm_re/models/best_models/ARS_REIN-188_EP_2128.zip"
 model = ARS.load(model_path, env=env)
-
 router = APIRouter()
-
-with open("validation_attempt.log", "a+") as f:
-    f.write(f"\nStarting seed {uuid.uuid4()}\n")
-
-with open("pings.log", "a+") as f:
-    f.write(f"\nStarting seed {uuid.uuid4()}\n")
 
 start_time = time.time()
 @router.post('/predict', response_model=LunarLanderPredictResponseDto)
 def predict(request: LunarLanderPredictRequestDto):
     obs = request.observation
 
-    with open("pings.log", "a+") as f_ping:
-        if request.is_terminal:
-            f_ping.write(str(time.time()) + ",X \n")
-            with open("validation_attempt.log", "a+") as f:
-                f.write(f"{time.time()- start_time}: Ending game! \n")
-            print("Current game is over, a new game will start with next request!")
-        else:
-            f_ping.write(str(time.time()) + "\n")
+    if request.is_terminal:
+        print("Current game is over, a new game will start with next request!")
 
     # Your moves go here!
     obs = np.array(obs)
